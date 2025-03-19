@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TrackCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="fRU-Ci-bFl" customClass="TrackCollectionViewCell" customModule="studyApp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="TrackCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="fRU-Ci-bFl" customClass="TrackCollectionViewCell" customModule="studyApp" customModuleProvider="target">
                                         <rect key="frame" x="106.66666666666667" y="311" width="180" height="240"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J1W-78-GWh">
@@ -382,18 +382,57 @@
         <!--캘린더-->
         <scene sceneID="Fvw-Ej-Zhf">
             <objects>
-                <viewController id="3um-5E-kj3" sceneMemberID="viewController">
+                <viewController id="3um-5E-kj3" customClass="CalenderViewController" customModule="studyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UDK-Jc-Omf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="Vfa-gH-IAx">
+                                <rect key="frame" x="0.0" y="69" width="393" height="417"/>
+                                <locale key="locale" localeIdentifier="ko_KR"/>
+                                <connections>
+                                    <action selector="datePicker:" destination="3um-5E-kj3" eventType="valueChanged" id="2wx-4y-bzV"/>
+                                </connections>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재시간 : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vtp-fA-obX">
+                                <rect key="frame" x="20" y="555" width="373" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="qSe-eP-1sC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="선택시간 : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXV-dh-k0m">
+                                <rect key="frame" x="20" y="618" width="381" height="47"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="06c-mc-EAf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aXV-dh-k0m" firstAttribute="top" secondItem="Vtp-fA-obX" secondAttribute="bottom" constant="16" id="1in-y6-NjI"/>
+                            <constraint firstItem="Vfa-gH-IAx" firstAttribute="trailing" secondItem="06c-mc-EAf" secondAttribute="trailing" id="2qj-60-Hkj"/>
+                            <constraint firstItem="Vfa-gH-IAx" firstAttribute="leading" secondItem="06c-mc-EAf" secondAttribute="leading" id="BSI-KO-ZJu"/>
+                            <constraint firstItem="aXV-dh-k0m" firstAttribute="leading" secondItem="06c-mc-EAf" secondAttribute="leading" constant="20" id="M3S-C5-RFN"/>
+                            <constraint firstItem="Vtp-fA-obX" firstAttribute="top" secondItem="Vfa-gH-IAx" secondAttribute="bottom" constant="68.666666666666742" id="fBm-Gj-FcN"/>
+                            <constraint firstItem="Vtp-fA-obX" firstAttribute="leading" secondItem="06c-mc-EAf" secondAttribute="leading" constant="20" id="gvX-yu-27Z"/>
+                            <constraint firstItem="Vfa-gH-IAx" firstAttribute="leading" secondItem="06c-mc-EAf" secondAttribute="leading" id="mcY-pe-cV2"/>
+                            <constraint firstItem="Vtp-fA-obX" firstAttribute="trailing" secondItem="06c-mc-EAf" secondAttribute="trailing" id="yKY-kI-9pG"/>
+                            <constraint firstAttribute="bottom" secondItem="Vtp-fA-obX" secondAttribute="bottom" constant="250" id="zkb-h3-Q9j"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="캘린더" image="calendar" catalog="system" id="i3Y-zu-fYx"/>
+                    <connections>
+                        <outlet property="curTimer" destination="Vtp-fA-obX" id="3tZ-pt-RsJ"/>
+                        <outlet property="picTimer" destination="aXV-dh-k0m" id="OS2-Wj-JjA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ph8-53-E4o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1178" y="804"/>
+            <point key="canvasLocation" x="1177.8625954198474" y="803.52112676056345"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vO2-Vh-gZn">
@@ -427,7 +466,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rzd-gz-afj">
-                                <rect key="frame" x="76" y="168" width="240" height="240"/>
+                                <rect key="frame" x="76" y="306" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxG-ki-ycH">
@@ -441,12 +480,6 @@
                                     <action selector="isAddImage:" destination="Fyh-nJ-BWk" eventType="touchUpInside" id="NBV-2W-bQk"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qqf-aq-cAI">
-                                <rect key="frame" x="284" y="725" width="51" height="31"/>
-                                <connections>
-                                    <action selector="isOffImage:" destination="Fyh-nJ-BWk" eventType="valueChanged" id="ZxS-Vc-kLz"/>
-                                </connections>
-                            </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="스위치 입력 횟수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sy-kV-4Xw">
                                 <rect key="frame" x="253" y="649" width="112" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -471,6 +504,42 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZfF-ZM-s3S">
+                                <rect key="frame" x="0.0" y="136" width="188" height="160"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Fyh-nJ-BWk" id="7xd-xp-Cxf"/>
+                                    <outlet property="delegate" destination="Fyh-nJ-BWk" id="7sM-Qi-Pw1"/>
+                                </connections>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UVe-d4-8M8">
+                                <rect key="frame" x="205" y="136" width="188" height="160"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Fyh-nJ-BWk" id="BCO-iL-gWA"/>
+                                    <outlet property="delegate" destination="Fyh-nJ-BWk" id="H7I-hP-rmB"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="그로밋 선택" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nK5-19-JOo">
+                                <rect key="frame" x="46" y="107" width="88" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="페더스 선택" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYC-45-JBK">
+                                <rect key="frame" x="253" y="107" width="84" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qqf-aq-cAI">
+                                <rect key="frame" x="284" y="725" width="51" height="31"/>
+                                <connections>
+                                    <action selector="isOffImage:" destination="Fyh-nJ-BWk" eventType="valueChanged" id="ZxS-Vc-kLz"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vR6-9j-Nlo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -494,6 +563,8 @@
                     <connections>
                         <outlet property="countBtn" destination="o2b-pM-rhe" id="Hft-xe-l6A"/>
                         <outlet property="countSwitch" destination="K9T-Hf-gWS" id="el9-eh-O9G"/>
+                        <outlet property="imgPicker1" destination="ZfF-ZM-s3S" id="4Rv-Qr-z5p"/>
+                        <outlet property="imgPicker2" destination="UVe-d4-8M8" id="H22-sS-hfQ"/>
                         <outlet property="imgView" destination="Rzd-gz-afj" id="IWZ-y9-Zdd"/>
                         <outlet property="isAdd" destination="vxG-ki-ycH" id="ytl-pU-K0m"/>
                         <outlet property="isOff" destination="Qqf-aq-cAI" id="oLr-YX-4qe"/>
@@ -501,7 +572,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSX-kX-4Fm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1198" y="6"/>
+            <point key="canvasLocation" x="1197.709923664122" y="5.6338028169014089"/>
         </scene>
     </scenes>
     <resources>
