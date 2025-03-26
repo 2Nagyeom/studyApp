@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="TrackCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="fRU-Ci-bFl" customClass="TrackCollectionViewCell" customModule="studyApp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TrackCollectionViewCell" translatesAutoresizingMaskIntoConstraints="NO" id="fRU-Ci-bFl" customClass="TrackCollectionViewCell" customModule="studyApp" customModuleProvider="target">
                                         <rect key="frame" x="106.66666666666667" y="311" width="180" height="240"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J1W-78-GWh">
@@ -379,58 +379,117 @@
             </objects>
             <point key="canvasLocation" x="-796.18320610687022" y="795.77464788732402"/>
         </scene>
-        <!--캘린더-->
+        <!--웹-->
         <scene sceneID="Fvw-Ej-Zhf">
             <objects>
-                <viewController id="3um-5E-kj3" customClass="CalenderViewController" customModule="studyApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3um-5E-kj3" customClass="WebViewController" customModule="studyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UDK-Jc-Omf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="Vfa-gH-IAx">
-                                <rect key="frame" x="0.0" y="69" width="393" height="417"/>
-                                <locale key="locale" localeIdentifier="ko_KR"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eg2-co-8sV">
+                                <rect key="frame" x="20" y="86" width="264" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIo-ZI-mjv">
+                                <rect key="frame" x="322" y="86" width="51" height="35"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <color key="tintColor" red="0.45098042490000001" green="0.48235297199999999" blue="0.93725490570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Go!"/>
                                 <connections>
-                                    <action selector="datePicker:" destination="3um-5E-kj3" eventType="valueChanged" id="2wx-4y-bzV"/>
+                                    <action selector="btnGoURL:" destination="3um-5E-kj3" eventType="touchUpInside" id="eJo-lO-s3H"/>
                                 </connections>
-                            </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재시간 : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vtp-fA-obX">
-                                <rect key="frame" x="20" y="555" width="373" height="47"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="qSe-eP-1sC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="선택시간 : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXV-dh-k0m">
-                                <rect key="frame" x="20" y="618" width="381" height="47"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </button>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xm7-lP-X6x">
+                                <rect key="frame" x="0.0" y="141" width="393" height="578"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="a7u-C2-jxw" appends="YES" id="eI9-Yh-8gu"/>
+                                </connections>
+                            </wkWebView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIz-RK-a1D">
+                                <rect key="frame" x="0.0" y="719" width="393" height="46"/>
+                                <items>
+                                    <barButtonItem width="50" style="plain" systemItem="fixedSpace" id="H0P-jN-hkM"/>
+                                    <barButtonItem systemItem="stop" id="YjA-5W-rDV">
+                                        <color key="tintColor" red="0.45098042490000001" green="0.48235297199999999" blue="0.93725490570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <action selector="btnStop:" destination="3um-5E-kj3" id="9O7-eI-7C6"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="50" style="plain" systemItem="fixedSpace" id="pZt-Oh-ok3"/>
+                                    <barButtonItem systemItem="refresh" id="faL-AN-GPI">
+                                        <color key="tintColor" red="0.45098042490000001" green="0.48235297199999999" blue="0.93725490570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <action selector="btnRefresh:" destination="3um-5E-kj3" id="c6z-b6-kgn"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="50" style="plain" systemItem="fixedSpace" id="jD8-Hg-Maf"/>
+                                    <barButtonItem systemItem="rewind" id="ROk-k0-Mv5">
+                                        <color key="tintColor" red="0.45098042490000001" green="0.48235297199999999" blue="0.93725490570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <action selector="btnRewind:" destination="3um-5E-kj3" id="u82-BN-seJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="50" style="plain" systemItem="fixedSpace" id="CrR-8t-5TP"/>
+                                    <barButtonItem systemItem="fastForward" id="qKk-94-En2">
+                                        <color key="tintColor" red="0.45098042490000001" green="0.48235297199999999" blue="0.93725490570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <action selector="btnFastforward:" destination="3um-5E-kj3" id="opj-ru-RJA"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="T9p-1W-dfq"/>
+                                </items>
+                            </toolbar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="6Cv-rS-UoI">
+                                <rect key="frame" x="186" y="420" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="06c-mc-EAf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="aXV-dh-k0m" firstAttribute="top" secondItem="Vtp-fA-obX" secondAttribute="bottom" constant="16" id="1in-y6-NjI"/>
-                            <constraint firstItem="Vfa-gH-IAx" firstAttribute="trailing" secondItem="06c-mc-EAf" secondAttribute="trailing" id="2qj-60-Hkj"/>
-                            <constraint firstItem="Vfa-gH-IAx" firstAttribute="leading" secondItem="06c-mc-EAf" secondAttribute="leading" id="BSI-KO-ZJu"/>
-                            <constraint firstItem="aXV-dh-k0m" firstAttribute="leading" secondItem="06c-mc-EAf" secondAttribute="leading" constant="20" id="M3S-C5-RFN"/>
-                            <constraint firstItem="Vtp-fA-obX" firstAttribute="top" secondItem="Vfa-gH-IAx" secondAttribute="bottom" constant="68.666666666666742" id="fBm-Gj-FcN"/>
-                            <constraint firstItem="Vtp-fA-obX" firstAttribute="leading" secondItem="06c-mc-EAf" secondAttribute="leading" constant="20" id="gvX-yu-27Z"/>
-                            <constraint firstItem="Vfa-gH-IAx" firstAttribute="leading" secondItem="06c-mc-EAf" secondAttribute="leading" id="mcY-pe-cV2"/>
-                            <constraint firstItem="Vtp-fA-obX" firstAttribute="trailing" secondItem="06c-mc-EAf" secondAttribute="trailing" id="yKY-kI-9pG"/>
-                            <constraint firstAttribute="bottom" secondItem="Vtp-fA-obX" secondAttribute="bottom" constant="250" id="zkb-h3-Q9j"/>
+                            <constraint firstItem="06c-mc-EAf" firstAttribute="bottom" secondItem="Xm7-lP-X6x" secondAttribute="bottom" constant="50" id="30o-pO-02G"/>
+                            <constraint firstItem="06c-mc-EAf" firstAttribute="trailing" secondItem="Eg2-co-8sV" secondAttribute="trailing" constant="109" id="BIt-Fe-wYv"/>
+                            <constraint firstItem="ZIz-RK-a1D" firstAttribute="trailing" secondItem="06c-mc-EAf" secondAttribute="trailing" id="EQ1-it-449"/>
+                            <constraint firstItem="06c-mc-EAf" firstAttribute="bottom" secondItem="ZIz-RK-a1D" secondAttribute="bottom" constant="4" id="Fiy-5j-p0e"/>
+                            <constraint firstItem="Eg2-co-8sV" firstAttribute="leading" secondItem="06c-mc-EAf" secondAttribute="leading" constant="20" id="Mk3-tr-CGS"/>
+                            <constraint firstItem="ZIz-RK-a1D" firstAttribute="leading" secondItem="06c-mc-EAf" secondAttribute="leading" id="Nid-cW-2rE"/>
+                            <constraint firstItem="Xm7-lP-X6x" firstAttribute="top" secondItem="Eg2-co-8sV" secondAttribute="bottom" constant="20" id="QLq-Zv-vqG"/>
+                            <constraint firstItem="06c-mc-EAf" firstAttribute="trailing" secondItem="LIo-ZI-mjv" secondAttribute="trailing" constant="20" id="Rll-ak-s0i"/>
+                            <constraint firstItem="Xm7-lP-X6x" firstAttribute="trailing" secondItem="06c-mc-EAf" secondAttribute="trailing" id="UrN-69-ou6"/>
+                            <constraint firstItem="Xm7-lP-X6x" firstAttribute="leading" secondItem="06c-mc-EAf" secondAttribute="leading" id="gbC-DV-W5a"/>
+                            <constraint firstItem="LIo-ZI-mjv" firstAttribute="leading" secondItem="Eg2-co-8sV" secondAttribute="trailing" constant="38" id="h8Z-Tx-l6n"/>
+                            <constraint firstItem="Eg2-co-8sV" firstAttribute="top" secondItem="06c-mc-EAf" secondAttribute="top" constant="27" id="hog-n5-hQV"/>
+                            <constraint firstItem="ZIz-RK-a1D" firstAttribute="top" secondItem="Xm7-lP-X6x" secondAttribute="bottom" id="i47-b4-3Ml"/>
+                            <constraint firstItem="06c-mc-EAf" firstAttribute="bottom" secondItem="LIo-ZI-mjv" secondAttribute="bottom" constant="648" id="jyG-os-FPs"/>
+                            <constraint firstItem="06c-mc-EAf" firstAttribute="bottom" secondItem="ZIz-RK-a1D" secondAttribute="bottom" constant="4" id="kXL-pr-d5s"/>
+                            <constraint firstItem="LIo-ZI-mjv" firstAttribute="centerY" secondItem="Eg2-co-8sV" secondAttribute="centerY" id="wX3-q9-gly"/>
+                            <constraint firstItem="LIo-ZI-mjv" firstAttribute="top" secondItem="Eg2-co-8sV" secondAttribute="top" id="ziV-5T-Ong"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="캘린더" image="calendar" catalog="system" id="i3Y-zu-fYx"/>
+                    <tabBarItem key="tabBarItem" title="웹" image="globe.badge.chevron.backward" catalog="system" id="i3Y-zu-fYx"/>
                     <connections>
-                        <outlet property="curTimer" destination="Vtp-fA-obX" id="3tZ-pt-RsJ"/>
-                        <outlet property="picTimer" destination="aXV-dh-k0m" id="OS2-Wj-JjA"/>
+                        <outlet property="myActivityIndicator" destination="6Cv-rS-UoI" id="m7l-M7-eU2"/>
+                        <outlet property="myWebView" destination="Xm7-lP-X6x" id="UEz-Dl-X7W"/>
+                        <outlet property="webTextField" destination="Eg2-co-8sV" id="VKj-Lf-XE3"/>
+                        <outlet property="webViewBottom" destination="i47-b4-3Ml" id="TlZ-SB-OdV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ph8-53-E4o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="a7u-C2-jxw">
+                    <connections>
+                        <action selector="tabBG:" destination="3um-5E-kj3" id="uuV-ln-bNL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1177.8625954198474" y="803.52112676056345"/>
         </scene>
@@ -576,9 +635,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="circle" catalog="system" width="128" height="123"/>
         <image name="circle.fill" catalog="system" width="128" height="123"/>
+        <image name="globe.badge.chevron.backward" catalog="system" width="128" height="114"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="music.note" catalog="system" width="96" height="128"/>
         <image name="play.circle.fill" catalog="system" width="128" height="123"/>
